@@ -29,8 +29,8 @@ const products = [
   {
     tag: 'Operativo',
     tagColor: 'bg-blue-500/20 text-blue-400',
-    title: 'ERP + CRM a medida',
-    desc: 'Gestion integral para PyMEs: clientes, facturacion, cotizaciones, stock, proyectos, gastos y KPIs. Integrado con IA.',
+    title: 'Syskore — ERP + CRM',
+    desc: 'Gestion integral para PyMEs: clientes, facturacion, cotizaciones, stock, proyectos, gastos y KPIs. Integrado con agente IA 24/7.',
     url: null,
     urlLabel: 'Solicitar demo',
     highlight: false,
