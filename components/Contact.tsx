@@ -14,7 +14,7 @@ export default function Contact() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/595981123456?text=Hola%20Netcore%2C%20me%20interesa%20conocer%20sus%20soluciones."
+              href="https://wa.me/595973323895?text=Hola%20Netcore%2C%20me%20interesa%20conocer%20sus%20soluciones."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5">
