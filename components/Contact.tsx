@@ -3,7 +3,7 @@ export default function Contact() {
     <section id="contacto" className="py-24 px-4 sm:px-6 bg-white/[0.02]">
       <div className="max-w-2xl mx-auto text-center">
         <div className="glass rounded-3xl p-10 sm:p-14">
-          <p className="text-brand-400 font-medium text-sm uppercase tracking-widest mb-3">Contacto</p>
+          <p className="text-electric-DEFAULT font-medium text-sm uppercase tracking-widest mb-3">Contacto</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Hablemos de tu proyecto
           </h2>

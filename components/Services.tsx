@@ -66,7 +66,7 @@ export default function Services() {
     <section id="servicios" className="py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-brand-400 font-medium text-sm uppercase tracking-widest mb-3">Que hacemos</p>
+          <p className="text-electric-DEFAULT font-medium text-sm uppercase tracking-widest mb-3">Que hacemos</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-white">
             Servicios de tecnologia
           </h2>
@@ -78,7 +78,7 @@ export default function Services() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map(s => (
             <div key={s.title} className="glass glass-hover rounded-2xl p-6">
-              <div className="w-12 h-12 rounded-xl bg-brand-600/20 text-brand-400 flex items-center justify-center mb-4">
+              <div className="w-12 h-12 rounded-xl bg-electric-glow text-electric-DEFAULT flex items-center justify-center mb-4">
                 {s.icon}
               </div>
               <h3 className="text-white font-semibold mb-2">{s.title}</h3>

@@ -30,7 +30,7 @@ export default function WhyUs() {
     <section id="nosotros" className="py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-brand-400 font-medium text-sm uppercase tracking-widest mb-3">Por que elegirnos</p>
+          <p className="text-electric-DEFAULT font-medium text-sm uppercase tracking-widest mb-3">Por que elegirnos</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-white">
             Lo que nos diferencia
           </h2>
@@ -39,7 +39,7 @@ export default function WhyUs() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {reasons.map((r, i) => (
             <div key={r.title} className="flex gap-4">
-              <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-600/20 text-brand-400 flex items-center justify-center text-sm font-bold mt-0.5">
+              <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-electric-glow text-electric-DEFAULT flex items-center justify-center text-sm font-bold mt-0.5">
                 {String(i + 1).padStart(2, '0')}
               </div>
               <div>
