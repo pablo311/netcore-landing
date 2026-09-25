@@ -1,73 +1,64 @@
+import { SafetyMark, SyskoreMark } from './BrandMarks'
+
+const tiles = [
+  {
+    name: 'Abocato', tagline: 'ASISTENTE LEGAL IA', href: '#abocato',
+    bg: 'bg-abocato-navy', nameColor: 'text-abocato-light', tagColor: 'text-abocato-deep',
+    mark: <img src="/brand/abocato-dark.svg" alt="" className="h-20 sm:h-28 w-auto" />,
+  },
+  {
+    name: 'Vendalia', tagline: 'MARKETPLACE DE NEGOCIOS', href: '#vendalia',
+    bg: 'bg-vendalia-tint', nameColor: 'text-ink', tagColor: 'text-vendalia-ink',
+    mark: <img src="/brand/vendalia-icon.svg" alt="" className="h-20 sm:h-28 w-auto" />,
+  },
+  {
+    name: 'Syskore', tagline: 'ERP INTELLIGENCE', href: '#syskore',
+    bg: 'bg-syskore-charcoal', nameColor: 'text-white', tagColor: 'text-syskore-silver',
+    mark: <SyskoreMark className="h-20 sm:h-28 w-auto" />,
+  },
+  {
+    name: 'SafetyAI', tagline: 'VISION INTELLIGENCE', href: '#safetyai',
+    bg: 'bg-safety-navy', nameColor: 'text-white', tagColor: 'text-safety-teal',
+    mark: <SafetyMark className="h-20 sm:h-28 w-auto" />,
+  },
+]
+
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-
-      {/* Layered background */}
-      <div className="absolute inset-0 bg-navy-DEFAULT" />
-      <div className="absolute inset-0 grid-bg opacity-60" />
-      {/* Radial glow — off-center for depth */}
-      <div className="absolute top-1/4 left-1/3 w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,209,255,0.12) 0%, transparent 70%)' }} />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,65,255,0.08) 0%, transparent 70%)' }} />
-
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
-
-        {/* Pill badge */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-electric text-xs text-electric-DEFAULT mb-10 font-medium tracking-wide">
-          <span className="w-1.5 h-1.5 rounded-full bg-electric-DEFAULT animate-pulse-glow" />
-          Soluciones IT activas en Paraguay
-        </div>
-
-        {/* Headline — large typographic scale */}
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-6">
-          <span className="text-white">Software e </span>
-          <span className="text-gradient">Inteligencia Artificial</span>
-          <br />
-          <span className="text-white">para tu empresa</span>
-        </h1>
-
-        <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-          Desarrollamos soluciones tecnológicas personalizadas para PyMEs e industrias
-          en Paraguay — desde agentes IA hasta plataformas completas de gestión.
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-20 sm:pb-28 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,600px)] gap-12 lg:gap-16 items-center">
+      <div className="flex flex-col gap-7">
+        <p className="flex items-center gap-2.5 text-sm font-medium text-nc-steel">
+          <span className="w-2 h-2 rounded-full bg-nc-teal" />
+          Hecho en Paraguay
         </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-          <a href="#contacto"
-            className="px-8 py-4 bg-electric-DEFAULT hover:bg-electric-dim text-navy-DEFAULT font-bold rounded-xl transition-all duration-200 shadow-lg shadow-electric-DEFAULT/25 hover:shadow-electric-DEFAULT/40 hover:-translate-y-1 text-base">
-            Solicitar demo
+        <h1 className="font-display font-extrabold text-5xl sm:text-6xl xl:text-[84px] leading-[0.98] tracking-[-0.03em] text-ink">
+          Software que las empresas de acá usan todos los días.
+        </h1>
+        <p className="text-lg sm:text-xl leading-relaxed text-muted max-w-xl">
+          Netcore es la casa de Abocato, Vendalia, Syskore y SafetyAI. Y cuando lo que necesitás
+          todavía no existe, lo construimos con vos.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3.5 mt-1">
+          <a href="#productos" className="px-7 py-4 rounded-xl bg-ink text-white font-semibold text-center hover:bg-navy transition-colors">
+            Conocer los productos
           </a>
-          <a href="#productos"
-            className="px-8 py-4 glass glass-hover text-white font-semibold rounded-xl text-base">
-            Ver productos →
+          <a href="#contacto" className="px-7 py-4 rounded-xl border-[1.5px] border-ink text-ink font-semibold text-center hover:bg-mist transition-colors">
+            Pedir un proyecto a medida
           </a>
-        </div>
-
-        {/* Stats bar */}
-        <div className="inline-flex flex-wrap justify-center gap-8 sm:gap-16 glass rounded-2xl px-10 py-6">
-          {[
-            { value: '4+',   label: 'Productos propios' },
-            { value: '3+',   label: 'Años de experiencia' },
-            { value: '24/7', label: 'Soporte & monitoreo' },
-            { value: 'PY',   label: 'Made in Paraguay' },
-          ].map(s => (
-            <div key={s.label} className="text-center">
-              <div className="text-2xl sm:text-3xl font-black text-electric-DEFAULT">{s.value}</div>
-              <div className="text-xs text-slate-400 mt-1 font-medium uppercase tracking-wider">{s.label}</div>
-            </div>
-          ))}
         </div>
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-navy-DEFAULT to-transparent" />
-
-      {/* Scroll cue */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-500">
-        <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7"/>
-        </svg>
+      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+        {tiles.map(t => (
+          <a key={t.name} href={t.href}
+            className={`${t.bg} aspect-square rounded-3xl p-5 sm:p-7 flex flex-col justify-between transition-transform hover:-translate-y-1`}>
+            <div className="self-start">{t.mark}</div>
+            <div className="flex flex-col gap-1">
+              <span className={`font-display font-bold text-xl sm:text-[28px] ${t.nameColor}`}>{t.name}</span>
+              <span className={`text-[9px] sm:text-[11px] tracking-[0.3em] sm:tracking-[5px] ${t.tagColor}`}>{t.tagline}</span>
+            </div>
+          </a>
+        ))}
       </div>
     </section>
   )
