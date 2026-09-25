@@ -4,7 +4,7 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Netcore Technology — Soluciones IT e Inteligencia Artificial en Paraguay',
   description:
-    'Netcore es la casa de Abocato, Vendalia, Syskore y SafetyAI: software e IA hechos en Paraguay. Y si lo que necesitás no existe, lo construimos a medida.',
+    'Infraestructura, desarrollo y automatizaciones con IA para empresas de Paraguay. Creadores de Abocato, Vendalia, Propy y CertiCarPy.',
   keywords: 'software Paraguay, inteligencia artificial Paraguay, ERP CRM, agente IA WhatsApp, seguridad laboral IA',
   authors: [{ name: 'Netcore Technology EAS' }],
   openGraph: {

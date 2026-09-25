@@ -7,7 +7,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="proceso" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 sm:pb-28 scroll-mt-24">
+    <section id="proceso" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 scroll-mt-24">
       <div className="rounded-[28px] border border-line p-8 sm:p-16 flex flex-col gap-10">
         <h2 className="font-display font-extrabold text-3xl sm:text-4xl tracking-[-0.02em]">Cómo trabajamos</h2>
         <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">

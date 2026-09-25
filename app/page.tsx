@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import Products from '@/components/Products'
-import Services from '@/components/Services'
+import Segments from '@/components/Segments'
+import Portfolio from '@/components/Portfolio'
 import Process from '@/components/Process'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
@@ -11,8 +11,8 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
-      <Products />
-      <Services />
+      <Segments />
+      <Portfolio />
       <Process />
       <Contact />
       <Footer />
