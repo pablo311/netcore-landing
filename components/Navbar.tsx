@@ -5,6 +5,7 @@ const links = [
   { label: 'Segmentos',       href: '#segmentos' },
   { label: 'Portafolio',      href: '#portafolio' },
   { label: 'Cómo trabajamos', href: '#proceso' },
+  { label: 'Preguntas',       href: '#preguntas' },
 ]
 
 export default function Navbar() {
@@ -24,7 +25,7 @@ export default function Navbar() {
             </a>
           ))}
           <a href="#contacto" className="px-5 py-3 rounded-[10px] bg-ink text-white font-semibold hover:bg-navy transition-colors">
-            Contacto
+            Hablemos
           </a>
         </div>
 
@@ -52,7 +53,7 @@ export default function Navbar() {
           ))}
           <a href="#contacto" onClick={() => setOpen(false)}
             className="mt-2 py-3 text-center font-semibold bg-ink text-white rounded-[10px]">
-            Contacto
+            Hablemos
           </a>
         </div>
       )}

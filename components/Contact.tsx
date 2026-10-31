@@ -1,24 +1,36 @@
-const WHATSAPP_URL = 'https://wa.me/595973323895?text=Hola%20Netcore%2C%20me%20interesa%20conocer%20sus%20soluciones.'
-const EMAIL = 'contacto@netcoretec.com.py'
+import { EMAIL, WHATSAPP_LABEL, WHATSAPP_URL } from '@/lib/contact'
 
 export default function Contact() {
   return (
     <section id="contacto" className="bg-navy text-white scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-12 flex flex-col gap-14">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-          <h2 className="font-display font-extrabold text-4xl sm:text-6xl leading-none tracking-[-0.02em] max-w-3xl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-10 lg:gap-16 items-end">
+        <div className="flex flex-col gap-5">
+          <h2 className="font-display font-extrabold text-4xl sm:text-6xl leading-none tracking-[-0.02em]">
             ¿Tenés un problema que el software podría resolver?
           </h2>
-          <div className="flex flex-col sm:flex-row gap-3.5 shrink-0">
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
-              className="px-7 py-4 rounded-xl bg-nc-blue text-navy font-bold text-center hover:bg-[#6DB5E5] transition-colors">
-              Escribinos por WhatsApp
-            </a>
-            <a href={`mailto:${EMAIL}`}
-              className="px-7 py-4 rounded-xl border-[1.5px] border-white/40 text-white font-semibold text-center hover:border-white transition-colors">
-              {EMAIL}
-            </a>
-          </div>
+          <p className="text-lg text-[#B7C8DA] max-w-xl">
+            Contanos qué necesitás. Respondemos en menos de 24 horas hábiles y coordinamos
+            una reunión sin compromiso.
+          </p>
+        </div>
+        <div className="flex flex-col gap-3">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
+            className="group rounded-2xl bg-nc-blue text-navy p-6 flex items-center justify-between gap-4 hover:bg-[#6DB5E5] transition-colors">
+            <span className="flex flex-col gap-1">
+              <span className="text-sm font-medium">La vía más rápida</span>
+              <span className="font-display font-bold text-2xl">Escribinos por WhatsApp</span>
+              <span className="text-sm">{WHATSAPP_LABEL}</span>
+            </span>
+            <span className="text-2xl group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
+          </a>
+          <a href={`mailto:${EMAIL}`}
+            className="group rounded-2xl border border-white/25 p-6 flex items-center justify-between gap-4 hover:border-white transition-colors">
+            <span className="flex flex-col gap-1">
+              <span className="text-sm text-[#B7C8DA]">Por email</span>
+              <span className="font-semibold text-lg break-all">{EMAIL}</span>
+            </span>
+            <span className="text-2xl group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>

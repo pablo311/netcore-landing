@@ -3,6 +3,8 @@ import Hero from '@/components/Hero'
 import Segments from '@/components/Segments'
 import Portfolio from '@/components/Portfolio'
 import Process from '@/components/Process'
+import Stack from '@/components/Stack'
+import Faq from '@/components/Faq'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
@@ -14,6 +16,8 @@ export default function Home() {
       <Segments />
       <Portfolio />
       <Process />
+      <Stack />
+      <Faq />
       <Contact />
       <Footer />
     </main>
