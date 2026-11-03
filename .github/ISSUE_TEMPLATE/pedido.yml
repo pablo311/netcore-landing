@@ -1,0 +1,18 @@
+name: Cambio en la landing
+description: Un texto, una sección o un arreglo de la landing, con lo que tiene que quedar.
+labels: ["pedido"]
+body:
+  - type: textarea
+    id: que
+    attributes:
+      label: Qué cambia y por qué
+      description: Sección (Hero, Servicios, Productos, Por qué nosotros, Contacto) y el motivo (cliente, campaña, error).
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Criterios de éxito
+      description: Cómo se ve que quedó. Por ejemplo, el texto exacto, que se lea bien en un celular, que el botón lleve al WhatsApp correcto.
+    validations:
+      required: true
