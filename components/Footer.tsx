@@ -1,38 +1,58 @@
-function NetcoreLogoSmall() {
-  return (
-    <svg viewBox="0 0 160 32" className="h-7 w-auto" role="img" aria-label="Netcore Technology" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="15" y1="6"  x2="5"  y2="24" stroke="#00D1FF" strokeWidth="1.2" strokeOpacity="0.35" strokeLinecap="round"/>
-      <line x1="15" y1="6"  x2="25" y2="24" stroke="#00D1FF" strokeWidth="1.2" strokeOpacity="0.35" strokeLinecap="round"/>
-      <line x1="5"  y1="24" x2="25" y2="24" stroke="#00D1FF" strokeWidth="1.2" strokeOpacity="0.35" strokeLinecap="round"/>
-      <line x1="15" y1="17" x2="15" y2="8"  stroke="#00D1FF" strokeWidth="1.4" strokeOpacity="0.8"  strokeLinecap="round"/>
-      <line x1="15" y1="17" x2="7"  y2="22" stroke="#00D1FF" strokeWidth="1.4" strokeOpacity="0.8"  strokeLinecap="round"/>
-      <line x1="15" y1="17" x2="23" y2="22" stroke="#00D1FF" strokeWidth="1.4" strokeOpacity="0.8"  strokeLinecap="round"/>
-      <circle cx="15" cy="6"  r="2"   fill="#00D1FF" opacity="0.8"/>
-      <circle cx="5"  cy="24" r="2"   fill="#00D1FF" opacity="0.8"/>
-      <circle cx="25" cy="24" r="2"   fill="#00D1FF" opacity="0.8"/>
-      <circle cx="15" cy="17" r="2.8" fill="#00D1FF"/>
-      <circle cx="15" cy="17" r="1.2" fill="#0A2540"/>
-      <text x="34" y="21" fontFamily="'Inter','Segoe UI',Arial,sans-serif" fontWeight="700" fontSize="13" fill="#FFFFFF" letterSpacing="0.5">NETCORE</text>
-    </svg>
-  )
-}
+import { EMAIL, WHATSAPP_LABEL, WHATSAPP_URL } from '@/lib/contact'
+
+const columns = [
+  {
+    title: 'Segmentos',
+    links: [
+      { label: 'Infraestructura',  href: '#infraestructura' },
+      { label: 'Desarrollo',       href: '#desarrollo' },
+      { label: 'Automatizaciones', href: '#automatizaciones' },
+    ],
+  },
+  {
+    title: 'Portafolio',
+    links: [
+      { label: 'Abocato',    href: 'https://abocato.com' },
+      { label: 'Vendalia',   href: '#portafolio' },
+      { label: 'Propy',      href: '#portafolio' },
+      { label: 'CertiCarPy', href: '#portafolio' },
+    ],
+  },
+  {
+    title: 'Contacto',
+    links: [
+      { label: `WhatsApp ${WHATSAPP_LABEL}`, href: WHATSAPP_URL },
+      { label: EMAIL,                        href: `mailto:${EMAIL}` },
+      { label: 'Asunción, Paraguay',         href: null },
+    ],
+  },
+]
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] py-10 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-
-        <NetcoreLogoSmall />
-
-        <p className="text-slate-600 text-sm">
-          &copy; {new Date().getFullYear()} Netcore Technology EAS — Asunción, Paraguay
-        </p>
-
-        <div className="flex items-center gap-6 text-sm text-slate-500">
-          <a href="#servicios" className="hover:text-slate-300 transition-colors">Servicios</a>
-          <a href="#productos" className="hover:text-slate-300 transition-colors">Productos</a>
-          <a href="#contacto"  className="hover:text-slate-300 transition-colors">Contacto</a>
+    <footer className="bg-navy text-[#B7C8DA]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10 border-t border-white/10 flex flex-col gap-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))] gap-10">
+          <div className="flex flex-col gap-4">
+            <img src="/brand/netcore-horizontal-dark.svg" alt="Netcore" className="h-8 w-auto self-start" />
+            <p className="text-sm leading-relaxed max-w-xs">
+              Infraestructura, desarrollo y automatizaciones para empresas de Paraguay.
+            </p>
+          </div>
+          {columns.map(c => (
+            <nav key={c.title} aria-label={c.title} className="flex flex-col gap-3 text-sm">
+              <p className="text-xs font-semibold tracking-[3px] uppercase text-white">{c.title}</p>
+              {c.links.map(l => l.href
+                ? <a key={l.label} href={l.href}
+                    {...(l.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    className="hover:text-white transition-colors break-all">{l.label}</a>
+                : <span key={l.label}>{l.label}</span>)}
+            </nav>
+          ))}
         </div>
+        <p className="pt-6 border-t border-white/10 text-sm text-[#8FA6BD]">
+          © {new Date().getFullYear()} Netcore Technology EAS
+        </p>
       </div>
     </footer>
   )

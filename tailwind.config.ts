@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 
+// Colores de brand guidelines v2.1 (netcore-marketing/brand/brand-guidelines-netcore.md)
 const config: Config = {
   content: [
     './app/**/*.{ts,tsx}',
@@ -8,42 +9,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          DEFAULT: '#0A2540',
-          light:   '#0D2E4E',
-          dark:    '#071B30',
+        ink:   '#111212',
+        navy:  { DEFAULT: '#0A2540', light: '#0D2E4E' },
+        mist:  '#F3F6F9',
+        line:  '#E1E6EC',
+        muted: '#4A5562',
+        nc: {
+          blue:  '#47A1DD',
+          steel: '#4780A7',
+          link:  '#2E6E99',
+          cyan:  '#27ABCB',
+          teal:  '#0CB8B3',
+          green: '#9AC77D',
         },
-        electric: {
-          DEFAULT: '#00D1FF',
-          dim:     '#00A8CC',
-          glow:    '#00D1FF26',
-        },
-        brand: {
-          50:  '#e0faff',
-          100: '#b3f3ff',
-          200: '#80ebff',
-          300: '#4de3ff',
-          400: '#1ADAFF',
-          500: '#00D1FF',
-          600: '#00A8CC',
-          700: '#007F99',
-          800: '#005566',
-          900: '#002B33',
-          950: '#001519',
-        },
-        slate: {
-          300: '#B0C4D8',
-          400: '#8BA3BC',
-          500: '#627D98',
-          600: '#486581',
-          700: '#334E68',
-          800: '#243B53',
-          900: '#102A43',
-          950: '#0A1929',
-        },
+        abocato:  { navy: '#081A32', panel: '#12294A', gold: '#DCBA6C', light: '#F1D584', deep: '#C49C51', dark: '#887339' },
+        vendalia: { violet: '#9A06FE', indigo: '#6B68FC', ink: '#5B31C9', tint: '#F5F2FF' },
+        syskore:  { charcoal: '#1A1F2E', panel: '#232A3D', navy: '#263E6B', silver: '#CCCCCD' },
+        safety:   { navy: '#0A1628', panel: '#13243A', teal: '#00B4A6', deep: '#00796F' },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', '"Segoe UI"', 'system-ui', 'sans-serif'],
+        display: ['"Bricolage Grotesque"', 'Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

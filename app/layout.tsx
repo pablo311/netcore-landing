@@ -4,7 +4,7 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Netcore Technology — Soluciones IT e Inteligencia Artificial en Paraguay',
   description:
-    'Desarrollamos software a medida, soluciones de IA y plataformas digitales para empresas en Paraguay. ERP, agentes IA, seguridad laboral, e-commerce y más.',
+    'Infraestructura, desarrollo y automatizaciones con IA para empresas de Paraguay. Creadores de Abocato, Vendalia, Propy y CertiCarPy.',
   keywords: 'software Paraguay, inteligencia artificial Paraguay, ERP CRM, agente IA WhatsApp, seguridad laboral IA',
   authors: [{ name: 'Netcore Technology EAS' }],
   openGraph: {
@@ -26,6 +26,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap"
+        />
+      </head>
       <body>{children}</body>
     </html>
   )
