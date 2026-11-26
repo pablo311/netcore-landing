@@ -1,12 +1,19 @@
 import type { Metadata, Viewport } from 'next'
-import { Bricolage_Grotesque, Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import { EMPRESA, PREGUNTAS, SITE_URL } from '@/lib/site'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
-const bricolage = Bricolage_Grotesque({
-  subsets: ['latin'],
-  weight: ['700', '800'],
+// Las tipografías van en el repo (app/fonts, licencia OFL): el build no
+// depende de bajar nada de Google Fonts.
+const inter = localFont({
+  src: './fonts/inter-latin-wght-normal.woff2',
+  weight: '100 900',
+  variable: '--font-inter',
+  display: 'swap',
+})
+const bricolage = localFont({
+  src: './fonts/bricolage-grotesque-latin-wght-normal.woff2',
+  weight: '200 800',
   variable: '--font-bricolage',
   display: 'swap',
 })
