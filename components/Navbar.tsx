@@ -5,7 +5,7 @@ import { WA_PRESUPUESTO } from '@/lib/site'
 const links = [
   { label: 'Servicios', href: '#servicios' },
   { label: 'Cómo trabajamos', href: '#proceso' },
-  { label: 'Obras', href: '#obras' },
+  { label: 'Productos', href: '#productos' },
   { label: 'Preguntas', href: '#preguntas' },
   { label: 'Contacto', href: '#contacto' },
 ]

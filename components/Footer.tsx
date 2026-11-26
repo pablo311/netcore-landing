@@ -13,7 +13,7 @@ export default function Footer() {
         </p>
         <nav className="flex flex-wrap gap-5" aria-label="Pie de página">
           <a href="/#servicios" className="hover:text-white">Servicios</a>
-          <a href="/#obras" className="hover:text-white">Obras</a>
+          <a href="/#productos" className="hover:text-white">Productos</a>
           <a href="/#contacto" className="hover:text-white">Contacto</a>
           <a href="/privacidad" className="hover:text-white">Privacidad</a>
         </nav>
