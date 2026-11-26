@@ -1,51 +1,41 @@
-const reasons = [
+const razones = [
   {
-    title: 'Equipo local, mentalidad global',
-    desc: 'Somos de Paraguay y entendemos el mercado local. Pero desarrollamos con estandares internacionales y las ultimas tecnologias.',
+    titulo: 'Certificamos, no solo instalamos',
+    texto: 'Cada punto se mide con equipos Fluke. Te queda un informe que demuestra que la red cumple la norma.',
   },
   {
-    title: 'IA integrada desde el dia 1',
-    desc: 'No agregamos IA como extra. La construimos dentro del producto desde el inicio para que realmente genere valor operativo.',
+    titulo: 'Tu negocio no para',
+    texto: 'Obras de noche, fines de semana y por sectores, con un cronograma que sabés de antemano.',
   },
   {
-    title: 'Entrega rapida, sin burocracia',
-    desc: 'Equipo agil, ciclos cortos y comunicacion directa. De la idea al MVP en semanas, no en meses.',
+    titulo: 'Presupuesto claro',
+    texto: 'Materiales, mano de obra y certificación separados. Sabés qué pagás y por qué.',
   },
   {
-    title: 'Producto vivo, no proyecto cerrado',
-    desc: 'Una vez entregado, seguimos evolucionando el sistema con vos. Soporte, mejoras y nuevas funciones con continuidad garantizada.',
+    titulo: 'Un solo responsable',
+    texto: 'Desde el relevamiento hasta el informe final. Hablás siempre con el mismo equipo, sin intermediarios.',
   },
   {
-    title: 'Stack moderno y escalable',
-    desc: 'Next.js, React Native, Python, Supabase, Stripe. Tecnologias que escalan y tienen ecosistemas activos.',
+    titulo: 'Materiales que cumplen',
+    texto: 'Cable de cobre sólido y marcas reconocidas. Si tu obra exige una especificación, la respetamos.',
   },
   {
-    title: 'Precio justo para el mercado PY',
-    desc: 'Calidad de empresa regional con precios adaptados a la realidad de las PyMEs paraguayas.',
+    titulo: 'Avance a la vista',
+    texto: 'Te compartimos el avance por punto y por etapa mientras dura la obra.',
   },
 ]
 
 export default function WhyUs() {
   return (
-    <section id="nosotros" className="py-24 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-electric-DEFAULT font-medium text-sm uppercase tracking-widest mb-3">Por que elegirnos</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">
-            Lo que nos diferencia
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reasons.map((r, i) => (
-            <div key={r.title} className="flex gap-4">
-              <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-electric-glow text-electric-DEFAULT flex items-center justify-center text-sm font-bold mt-0.5">
-                {String(i + 1).padStart(2, '0')}
-              </div>
-              <div>
-                <h3 className="text-white font-semibold mb-1.5">{r.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{r.desc}</p>
-              </div>
+    <section id="nosotros" className="bg-niebla py-20 sm:py-24">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <p className="eyebrow">Por qué Netcore</p>
+        <h2 className="titulo-seccion mt-3 max-w-2xl">Lo que nos piden los administradores de edificios y empresas</h2>
+        <div className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+          {razones.map((r) => (
+            <div key={r.titulo} className="border-l-2 border-primario pl-5">
+              <h3 className="font-display text-lg font-bold text-navy">{r.titulo}</h3>
+              <p className="mt-1.5 text-[15px] leading-relaxed text-slate-600">{r.texto}</p>
             </div>
           ))}
         </div>

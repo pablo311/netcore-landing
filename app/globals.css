@@ -2,78 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: #0A2540;
-  color: #f1f5f9;
+  background: #ffffff;
+  color: #111212;
   -webkit-font-smoothing: antialiased;
 }
 
-@layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-blue-300;
+@layer components {
+  .btn-primario {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primario px-6 py-3.5 font-semibold text-navy transition hover:bg-cian focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primario;
   }
-  .text-gradient-subtle {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300;
+  .btn-secundario {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10;
   }
-  .glass {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-enlace;
   }
-  .glass-hover {
-    @apply hover:bg-white/[0.07] hover:border-white/[0.14] transition-all duration-300;
-  }
-  .glass-electric {
-    background: rgba(0, 209, 255, 0.06);
-    border: 1px solid rgba(0, 209, 255, 0.18);
-  }
-  .glow-electric {
-    box-shadow: 0 0 40px rgba(0, 209, 255, 0.15);
-  }
-  .glow-electric-sm {
-    box-shadow: 0 0 20px rgba(0, 209, 255, 0.2);
-  }
-  .grid-bg {
-    background-image:
-      linear-gradient(to right, rgba(0,209,255,0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0,209,255,0.04) 1px, transparent 1px);
-    background-size: 64px 64px;
-  }
-  .dot-bg {
-    background-image: radial-gradient(rgba(0,209,255,0.08) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-  .section-divider {
-    border-top: 1px solid rgba(0,209,255,0.08);
+  .titulo-seccion {
+    @apply font-display text-3xl font-extrabold leading-tight tracking-tight text-navy sm:text-4xl;
   }
 }
 
-/* Smooth fade-in for sections */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+.trama {
+  background-image:
+    linear-gradient(to right, rgba(71, 161, 221, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(71, 161, 221, 0.08) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
-.animate-fade-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-/* Pulse glow */
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.6; }
-  50%       { opacity: 1; }
-}
-.animate-pulse-glow {
-  animation: pulseGlow 2.5s ease-in-out infinite;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #0A2540; }
-::-webkit-scrollbar-thumb { background: #00D1FF40; border-radius: 2px; }

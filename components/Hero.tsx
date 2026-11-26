@@ -1,73 +1,90 @@
-export default function Hero() {
+import { WA_PRESUPUESTO } from '@/lib/site'
+
+// Elemento firma: una tarjeta de informe de certificación, como la que
+// entregamos por cada punto. Los datos son de ejemplo y lo dice.
+const pruebas = [
+  { id: 'P2-SW01-P12', largo: '38,4 m', margen: '6,1 dB' },
+  { id: 'P2-SW01-P13', largo: '41,0 m', margen: '5,4 dB' },
+  { id: 'P2-SW01-P14', largo: '44,7 m', margen: '4,8 dB' },
+  { id: 'P2-SW01-P15', largo: '29,2 m', margen: '7,3 dB' },
+]
+
+function TarjetaInforme() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-
-      {/* Layered background */}
-      <div className="absolute inset-0 bg-navy-DEFAULT" />
-      <div className="absolute inset-0 grid-bg opacity-60" />
-      {/* Radial glow — off-center for depth */}
-      <div className="absolute top-1/4 left-1/3 w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,209,255,0.12) 0%, transparent 70%)' }} />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(0,65,255,0.08) 0%, transparent 70%)' }} />
-
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
-
-        {/* Pill badge */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-electric text-xs text-electric-DEFAULT mb-10 font-medium tracking-wide">
-          <span className="w-1.5 h-1.5 rounded-full bg-electric-DEFAULT animate-pulse-glow" />
-          Soluciones IT activas en Paraguay
+    <figure className="w-full max-w-md rounded-2xl border border-white/10 bg-white p-5 text-ink shadow-2xl shadow-black/40 sm:p-6">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-acero">Informe de certificación</p>
+          <p className="mt-1 font-display text-lg font-extrabold text-navy">TIA Cat 6 Channel</p>
         </div>
-
-        {/* Headline — large typographic scale */}
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-6">
-          <span className="text-white">Software e </span>
-          <span className="text-gradient">Inteligencia Artificial</span>
-          <br />
-          <span className="text-white">para tu empresa</span>
-        </h1>
-
-        <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-          Desarrollamos soluciones tecnológicas personalizadas para PyMEs e industrias
-          en Paraguay — desde agentes IA hasta plataformas completas de gestión.
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-          <a href="#contacto"
-            className="px-8 py-4 bg-electric-DEFAULT hover:bg-electric-dim text-navy-DEFAULT font-bold rounded-xl transition-all duration-200 shadow-lg shadow-electric-DEFAULT/25 hover:shadow-electric-DEFAULT/40 hover:-translate-y-1 text-base">
-            Solicitar demo
-          </a>
-          <a href="#productos"
-            className="px-8 py-4 glass glass-hover text-white font-semibold rounded-xl text-base">
-            Ver productos →
-          </a>
-        </div>
-
-        {/* Stats bar */}
-        <div className="inline-flex flex-wrap justify-center gap-8 sm:gap-16 glass rounded-2xl px-10 py-6">
-          {[
-            { value: '4+',   label: 'Productos propios' },
-            { value: '3+',   label: 'Años de experiencia' },
-            { value: '24/7', label: 'Soporte & monitoreo' },
-            { value: 'PY',   label: 'Made in Paraguay' },
-          ].map(s => (
-            <div key={s.label} className="text-center">
-              <div className="text-2xl sm:text-3xl font-black text-electric-DEFAULT">{s.value}</div>
-              <div className="text-xs text-slate-400 mt-1 font-medium uppercase tracking-wider">{s.label}</div>
-            </div>
-          ))}
-        </div>
+        <span className="rounded-full bg-niebla px-2.5 py-1 text-[11px] font-medium text-acero">Ejemplo</span>
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-navy-DEFAULT to-transparent" />
+      <table className="mt-5 w-full text-left text-sm">
+        <thead>
+          <tr className="border-b border-slate-200 text-[11px] uppercase tracking-wider text-slate-500">
+            <th className="pb-2 font-medium">Punto</th>
+            <th className="pb-2 font-medium">Largo</th>
+            <th className="pb-2 font-medium">Margen</th>
+            <th className="pb-2 text-right font-medium">Resultado</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pruebas.map((p) => (
+            <tr key={p.id} className="border-b border-slate-100 last:border-0">
+              <td className="py-2.5 font-mono text-[13px] text-navy">{p.id}</td>
+              <td className="py-2.5 text-slate-600">{p.largo}</td>
+              <td className="py-2.5 text-slate-600">{p.margen}</td>
+              <td className="py-2.5 text-right">
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-verde/25 px-2 py-0.5 text-xs font-bold text-[#2F5D17]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#3E7A1F]" aria-hidden="true" />
+                  PASS
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-      {/* Scroll cue */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-500">
-        <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7"/>
-        </svg>
+      <figcaption className="mt-4 border-t border-slate-200 pt-3 text-xs leading-relaxed text-slate-500">
+        Medido con equipos Fluke. Cada punto queda con su resultado, largo y margen en el informe que te entregamos.
+      </figcaption>
+    </figure>
+  )
+}
+
+export default function Hero() {
+  return (
+    <section id="inicio" className="relative overflow-hidden bg-navy pb-20 pt-28 text-white sm:pb-24 sm:pt-36">
+      <div className="trama absolute inset-0" aria-hidden="true" />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.15fr_1fr]">
+        <div>
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-1.5 text-xs font-medium text-white/80">
+            <span className="h-1.5 w-1.5 rounded-full bg-teal" aria-hidden="true" />
+            Infraestructura de red para empresas y edificios
+          </p>
+          <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+            Cableado estructurado y fibra óptica en Asunción,{' '}
+            <span className="text-primario">instalado y certificado.</span>
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
+            Tendemos tu red UTP Cat6 y fibra, armamos racks, instalamos cámaras y te entregamos cada punto
+            certificado con equipos Fluke. Trabajamos de noche o por etapas para que tu negocio no pare.
+          </p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href={WA_PRESUPUESTO} target="_blank" rel="noopener noreferrer" className="btn-primario text-base">
+              Pedir presupuesto por WhatsApp
+            </a>
+            <a href="#servicios" className="btn-secundario text-base">
+              Ver servicios
+            </a>
+          </div>
+          <p className="mt-4 text-sm text-white/60">Presupuesto sin cargo y detallado, ítem por ítem.</p>
+        </div>
+
+        <div className="flex justify-center lg:justify-end">
+          <TarjetaInforme />
+        </div>
       </div>
     </section>
   )
