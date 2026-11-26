@@ -1,3 +1,5 @@
+import Reveal from '@/components/Reveal'
+
 const pasos = [
   {
     n: '01',
@@ -28,11 +30,13 @@ export default function Proceso() {
         <p className="eyebrow">Cómo trabajamos</p>
         <h2 className="titulo-seccion mt-3 max-w-2xl">Sabés qué se hace, cuándo y cuánto cuesta</h2>
         <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {pasos.map((p) => (
-            <li key={p.n} className="relative rounded-2xl bg-white p-6 shadow-sm">
+          {pasos.map((p, i) => (
+            <li key={p.n}>
+              <Reveal delay={i * 0.08} className="h-full rounded-2xl bg-white p-6 shadow-sm">
               <span className="font-display text-sm font-extrabold text-primario">{p.n}</span>
               <h3 className="mt-2 font-display text-lg font-bold text-navy">{p.titulo}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-slate-600">{p.texto}</p>
+              </Reveal>
             </li>
           ))}
         </ol>

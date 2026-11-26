@@ -1,3 +1,5 @@
+import Reveal from '@/components/Reveal'
+
 const obras = [
   {
     cliente: 'Paseo La Galería',
@@ -42,8 +44,9 @@ export default function Obras() {
         <h2 className="titulo-seccion mt-3 max-w-2xl">Algunos trabajos recientes</h2>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {obras.map((o) => (
-            <article key={o.cliente} className="flex flex-col rounded-2xl border border-slate-200 p-6 sm:p-7">
+          {obras.map((o, i) => (
+            <Reveal key={o.cliente} delay={i * 0.08}>
+            <article className="flex h-full flex-col rounded-2xl border border-slate-200 p-6 sm:p-7">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="font-display text-xl font-extrabold text-navy">{o.cliente}</h3>
@@ -55,6 +58,7 @@ export default function Obras() {
               </div>
               <p className="mt-4 text-[15px] leading-relaxed text-slate-600">{o.texto}</p>
             </article>
+            </Reveal>
           ))}
         </div>
 

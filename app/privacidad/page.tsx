@@ -23,8 +23,9 @@ export default function Privacidad() {
         <h1 className="font-display text-3xl font-extrabold text-navy">Política de privacidad</h1>
         <div className="mt-8 space-y-5 text-[15px] leading-relaxed">
           <p>
-            Este sitio es de {EMPRESA.razonSocial} (RUC {EMPRESA.ruc}). No tiene formularios ni cuentas de usuario y
-            no usa cookies de seguimiento.
+            Este sitio es de {EMPRESA.razonSocial} (RUC {EMPRESA.ruc}). No tiene cuentas de usuario ni usa cookies
+            de seguimiento. El formulario de presupuesto no guarda nada en el sitio: solo arma un mensaje y abre
+            WhatsApp para que lo envíes vos.
           </p>
           <p>
             Cuando nos escribís por WhatsApp o por correo, usamos tu nombre, tu contacto y lo que nos contás solo para

@@ -1,3 +1,5 @@
+import Reveal from '@/components/Reveal'
+
 const razones = [
   {
     titulo: 'Certificamos, no solo instalamos',
@@ -32,11 +34,11 @@ export default function WhyUs() {
         <p className="eyebrow">Por qué Netcore</p>
         <h2 className="titulo-seccion mt-3 max-w-2xl">Lo que nos piden los administradores de edificios y empresas</h2>
         <div className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-          {razones.map((r) => (
-            <div key={r.titulo} className="border-l-2 border-primario pl-5">
+          {razones.map((r, i) => (
+            <Reveal key={r.titulo} delay={(i % 3) * 0.06} className="border-l-2 border-primario pl-5">
               <h3 className="font-display text-lg font-bold text-navy">{r.titulo}</h3>
               <p className="mt-1.5 text-[15px] leading-relaxed text-slate-600">{r.texto}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
