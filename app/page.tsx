@@ -1,8 +1,5 @@
-import Cabecera from '@/components/Cabecera'
-import Cierre from '@/components/Cierre'
-import Pie from '@/components/Pie'
-import Plano from '@/components/Plano'
-import { ACCION, CLIENTES, EMPRESA, MARCAS, PASOS, PREGUNTAS, WA_GENERAL } from '@/lib/site'
+import Marco from '@/components/Marco'
+import { ACCION, CLIENTES, MARCAS, PASOS, PREGUNTAS, WA_GENERAL } from '@/lib/site'
 import { SERVICIOS } from '@/lib/servicios'
 
 const preguntasLd = {
@@ -20,103 +17,76 @@ function lista(nombres: string[]) {
 }
 
 export default function Inicio() {
-  const logos = CLIENTES.filter((c) => c.logo)
   return (
-    <>
-      <Cabecera actual="/" />
-      <main>
-        <section className="portada sobre-marino">
-          <div className="wrap arriba">
-            <div>
-              <h1 className="display">
-                <span>Todo conectado.</span>
-                <span>Todo andando.</span>
-              </h1>
-              <p className="bajada">
-                Internet, cableado, cámaras y sistemas para tu negocio, instalados y funcionando.
-              </p>
-              <div className="acciones">
-                <a className="btn" href={WA_GENERAL} target="_blank" rel="noopener">
-                  {ACCION}
-                </a>
-                <p className="zona">{EMPRESA.cobertura}</p>
-              </div>
-            </div>
-            <div className="lamina">
-              <Plano
-                capa="todo"
-                entrada
-                descripcion="Plano de ejemplo de un local con salón, caja, oficina y depósito. La red, el WiFi y las cámaras salen de un mismo rack."
-              />
-            </div>
-          </div>
-          <div className="wrap">
-            <nav className="leyenda" aria-label="Servicios">
-              {SERVICIOS.map((s) => (
-                <a key={s.slug} href={`/${s.slug}`} data-capa-de={s.capa}>
-                  <b>{s.nombre}</b>
-                  <span>{s.corto}</span>
-                </a>
-              ))}
-            </nav>
-          </div>
-        </section>
+    <Marco actual="/">
+      <h1 className="display">Instalamos la tecnología de tu negocio y nos quedamos para que ande.</h1>
+      <p className="bajada">
+        Internet, cableado, cámaras, un WhatsApp que atiende solo y sistemas a medida. Para locales, oficinas y
+        edificios de Asunción y Ciudad del Este.
+      </p>
+      <p className="accion">
+        <a className="btn tinta" href={WA_GENERAL} target="_blank" rel="noopener">
+          {ACCION}
+        </a>
+      </p>
 
-        <section className="clientes">
-          <div className="wrap">
-            {logos.length === CLIENTES.length ? (
-              <>
-                <h2 className="display">Confían en nosotros</h2>
-                <ul>
-                  {logos.map((c) => (
-                    <li key={c.nombre}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={c.logo} alt={c.nombre} loading="lazy" />
-                    </li>
-                  ))}
-                </ul>
-              </>
+      <h2 className="display">Qué hacemos</h2>
+      <ul className="lista enlaces">
+        {SERVICIOS.map((s) => (
+          <li key={s.slug}>
+            <a href={`/${s.slug}`}>
+              <b>{s.nombre}.</b> {s.corto}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <p className="frase">
+        Un cableado mal hecho no se nota el primer día. Se nota cuando algo falla y nadie sabe qué cable es cuál.
+      </p>
+
+      <h2 className="display" id="clientes">
+        Confían en nosotros
+      </h2>
+      <ul className="logos">
+        {CLIENTES.map((c) => (
+          <li key={c.nombre}>
+            {c.logo ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={c.logo} alt={c.nombre} loading="lazy" />
             ) : (
-              <p className="display">Confían en nosotros {lista(CLIENTES.map((c) => c.nombre))}.</p>
+              c.nombre
             )}
-          </div>
-        </section>
+          </li>
+        ))}
+      </ul>
 
-        <section className="proceso">
-          <div className="wrap">
-            <h2 className="display">Primero entendemos. Después instalamos.</h2>
-            <ol className="pasos">
-              {PASOS.map((p) => (
-                <li key={p.t}>
-                  <h3>{p.t}</h3>
-                  <p>{p.d}</p>
-                </li>
-              ))}
-            </ol>
-            <p className="marcas">
-              Instalamos {lista(MARCAS)}. Certificamos con equipos Fluke.
-            </p>
-          </div>
-        </section>
+      <h2 className="display">Cómo trabajamos</h2>
+      <ol className="lista pasos">
+        {PASOS.map((p) => (
+          <li key={p.t}>
+            <b>{p.t}.</b> {p.d}
+          </li>
+        ))}
+      </ol>
+      <p className="nota">Instalamos {lista(MARCAS)}. Certificamos con equipos Fluke.</p>
 
-        <section className="preguntas">
-          <div className="wrap">
-            <h2 className="display">Lo que nos preguntan antes de empezar.</h2>
-            <div>
-              {PREGUNTAS.map((q) => (
-                <details key={q.p}>
-                  <summary>{q.p}</summary>
-                  <p>{q.r}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
+      <h2 className="display">Lo que nos preguntan antes de empezar</h2>
+      <div className="preguntas">
+        {PREGUNTAS.map((q) => (
+          <details key={q.p}>
+            <summary>{q.p}</summary>
+            <p>{q.r}</p>
+          </details>
+        ))}
+      </div>
 
-        <Cierre />
-      </main>
-      <Pie />
+      <p className="accion final">
+        <a className="btn tinta" href={WA_GENERAL} target="_blank" rel="noopener">
+          {ACCION}
+        </a>
+      </p>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(preguntasLd) }} />
-    </>
+    </Marco>
   )
 }

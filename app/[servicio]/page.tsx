@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Cabecera from '@/components/Cabecera'
-import Pie from '@/components/Pie'
-import Plano from '@/components/Plano'
+import Marco from '@/components/Marco'
 import { ACCION } from '@/lib/site'
 import { SERVICIOS, servicioPorSlug } from '@/lib/servicios'
 
@@ -31,71 +29,49 @@ export default async function PaginaServicio({ params }: Props) {
   const sigue = SERVICIOS[(SERVICIOS.indexOf(s) + 1) % SERVICIOS.length]
 
   return (
-    <>
-      <Cabecera actual={`/${s.slug}`} wa={s.wa} />
-      <main className="servicio">
-        <div className="wrap">
-          <div className="enc">
-            <h1 className="display">{s.titulo}</h1>
-            <p className="bajada">{s.bajada}</p>
-          </div>
+    <Marco actual={`/${s.slug}`} foco={s.foco} lema={s.lema} wa={s.wa}>
+      <h1 className="display">{s.titulo}</h1>
+      <p className="bajada">{s.bajada}</p>
 
-          <div className="lado sobre-marino lamina">
-            <Plano capa={s.capa} descripcion={s.plano} />
-          </div>
+      <h2 className="display">Qué hacemos</h2>
+      <ul className="lista">
+        {s.hace.map((h) => (
+          <li key={h.t}>
+            <b>{h.t}</b> {h.d}
+          </li>
+        ))}
+      </ul>
 
-          <div className="cuerpo">
-            <h2 className="display">Qué hacemos</h2>
-            <ul className="lista">
-              {s.hace.map((h) => (
-                <li key={h.t}>
-                  <b>{h.t}</b> {h.d}
-                </li>
-              ))}
-            </ul>
-            <p className="frase">{s.frase}</p>
+      <p className="frase">{s.frase}</p>
 
-            <details className="tecnico">
-              <summary>Ver detalle técnico</summary>
-              <ul>
-                {s.tecnico.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </details>
+      {s.productos && (
+        <>
+          <h2 className="display">Hechos por nosotros</h2>
+          <ul className="lista">
+            {s.productos.map((p) => (
+              <li key={p.nombre}>
+                <b>{p.nombre}.</b> {p.d} <span className="estado">{p.estado}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
 
-            {s.productos && (
-              <>
-                <h2 className="display">Hechos por nosotros</h2>
-                <ul className="lista">
-                  {s.productos.map((p) => (
-                    <li key={p.nombre}>
-                      <b>{p.nombre}.</b> {p.d} <span className="estado">{p.estado}</span>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
+      <h2 className="display">Qué te queda</h2>
+      <ul className="lista">
+        {s.queda.map((q) => (
+          <li key={q}>{q}</li>
+        ))}
+      </ul>
 
-            <h2 className="display">Qué te queda</h2>
-            <ul className="lista queda">
-              {s.queda.map((q) => (
-                <li key={q}>{q}</li>
-              ))}
-            </ul>
-
-            <div className="acciones">
-              <a className="btn tinta" href={s.wa} target="_blank" rel="noopener">
-                {ACCION}
-              </a>
-              <a className="sigue" href={`/${sigue.slug}`}>
-                Seguir con {sigue.nombre.toLowerCase().replace('wifi', 'WiFi')}
-              </a>
-            </div>
-          </div>
-        </div>
-      </main>
-      <Pie />
-    </>
+      <p className="accion final">
+        <a className="btn tinta" href={s.wa} target="_blank" rel="noopener">
+          {ACCION}
+        </a>
+        <a className="sigue" href={`/${sigue.slug}`}>
+          Seguir con {sigue.nombre.toLowerCase().replace('wifi', 'WiFi')}
+        </a>
+      </p>
+    </Marco>
   )
 }

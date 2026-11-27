@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
-export const viewport: Viewport = { themeColor: '#0A2540' }
+export const viewport: Viewport = { themeColor: '#FFFFFF' }
 
 const jsonLd = {
   '@context': 'https://schema.org',

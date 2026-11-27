@@ -28,7 +28,7 @@ export const WA_GENERAL = waLink('Hola Netcore, quiero contarles lo que necesita
 // Solo el nombre o el logo: nunca datos de sus obras.
 // Para usar un logo, ponerlo en public/clientes/ y completar `logo`.
 export const CLIENTES: { nombre: string; logo?: string }[] = [
-  { nombre: 'Paseo La Galería' },
+  { nombre: 'Paseo La Galería', logo: '/clientes/paseo-la-galeria.webp' },
   { nombre: 'Blue Tower' },
   { nombre: 'Daylic' },
 ]
