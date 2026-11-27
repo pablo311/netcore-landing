@@ -1,203 +1,1161 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-/* Diseño "Hablemos": tipografía grande, parte del problema del cliente
-   y lo lleva a WhatsApp. Tokens de la marca v2.1 (ver DESIGN.md). */
+/* Netcore, dirección «El plano». Tokens y reglas en DESIGN.md.
+   Todo color y toda tipografía salen de estos tokens: no se escriben valores sueltos más abajo. */
 :root {
-  --navy: #0a2540;
-  --navy-3: #071b30;
-  --ink: #111212;
-  --pri: #47a1dd;
-  --acero: #4780a7;
-  --link: #2e6e99;
-  --teal: #0cb8b3;
-  --verde: #9ac77d;
-  --blanco: #ffffff;
+  /* color */
+  --marino: #0a2540;
+  --marino-2: #0e2e4e;
+  --tinta: #111212;
   --papel: #f4f8f6;
+  --hoja: #fbfdfc;
+  --verde: #9ac77d;
+  --verde-claro: #abd490;
+  --cian: #27abcb;
+  --primario: #47a1dd;
+  --enlace: #2e6e99;
+  --muro: #6e94b4;
+  --mueble: #35587a;
+  --pulso: #d8f3f0;
   --texto: #33423f;
-  --texto-claro: #c9d8e6;
+  --texto-suave: #5c6b67;
+  --sobre-marino: #eef4f8;
+  --sobre-marino-suave: #a9c1d6;
+  --linea: #d9e3df;
+  --linea-marino: #23405e;
+  --anillo: var(--enlace);
+
+  /* tipografía: dos familias, una escala */
+  --display: var(--font-bricolage), 'Arial Narrow', Arial, sans-serif;
+  --cuerpo: var(--font-inter), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --t-titular: clamp(2.6rem, 4.6vw, 4.1rem);
+  --t-titulo: clamp(2.1rem, 3.7vw, 3.25rem);
+  --t-seccion: clamp(1.9rem, 3.2vw, 2.75rem);
+  --t-apartado: clamp(1.625rem, 2.8vw, 2.5rem);
+  --t-sub: 1.25rem;
+  --t-bajada: clamp(1.125rem, 1.45vw, 1.3125rem);
+  --t-cuerpo: 1.0625rem;
+  --t-chico: 0.9375rem;
+  --t-nota: 0.8125rem;
+
+  /* espacio */
+  --e-1: 0.5rem;
+  --e-2: 1rem;
+  --e-3: 1.5rem;
+  --e-4: 2.5rem;
+  --e-5: 4rem;
+  --e-seccion: clamp(4.5rem, 8.4vw, 7.5rem);
+  --e-seccion-larga: clamp(5rem, 10vw, 9.5rem);
+  --borde: max(1.25rem, env(safe-area-inset-left, 0px));
+  --ancho: 77.5rem;
+  --alto-cab: 4.25rem;
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 24px;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-padding-top: calc(var(--alto-cab) + 1rem);
 }
 body {
+  overflow-x: clip;
   background: var(--papel);
   color: var(--texto);
-  font-size: 16px;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--cuerpo);
+  font-size: var(--t-cuerpo);
+  line-height: 1.6;
+}
+::selection {
+  background: var(--verde);
+  color: var(--tinta);
 }
 :focus-visible {
-  outline: 3px solid var(--pri);
+  outline: 2px solid var(--anillo);
   outline-offset: 3px;
 }
-
-@layer components {
-  .wrap {
-    @apply mx-auto w-full max-w-[1120px] px-5;
-  }
-  .display {
-    font-family: var(--font-bricolage), var(--font-inter), system-ui, sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-  }
-  .h2 {
-    font-family: var(--font-bricolage), var(--font-inter), system-ui, sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.015em;
-    line-height: 1.08;
-    font-size: clamp(28px, 4vw, 42px);
-    color: var(--ink);
-    text-wrap: balance;
-  }
-  .sobre {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-  .btn {
-    @apply inline-flex items-center justify-center gap-2.5 font-semibold no-underline;
-    font-size: 16px;
-    padding: 15px 24px;
-    border-radius: 14px;
-    transition: transform 0.15s, background 0.15s;
-  }
-  .btn:hover {
-    transform: translateY(-2px);
-  }
-  .pill {
-    @apply inline-block whitespace-nowrap font-semibold;
-    font-size: 12px;
-    padding: 3px 10px;
-    border-radius: 99px;
-  }
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+a {
+  text-underline-position: from-font;
+  text-decoration-thickness: from-font;
 }
 
-/* ---------- Hero ---------- */
-.titular {
-  position: relative;
-  z-index: 0;
-  font-size: clamp(44px, 7.4vw, 96px);
-  line-height: 0.96;
-  color: var(--ink);
+.wrap {
+  width: 100%;
+  max-width: var(--ancho);
+  margin-inline: auto;
+  padding-inline: var(--borde);
 }
-.titular em {
-  font-style: normal;
-  position: relative;
+.sobre-marino {
+  --anillo: var(--verde);
+  background: var(--marino);
+  color: var(--sobre-marino);
+}
+.display {
+  font-family: var(--display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+.nb {
   white-space: nowrap;
 }
-.titular em::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0.04em;
-  height: 0.2em;
+
+/* El único botón del sitio. Mismo nombre en todas partes: «Escribir por WhatsApp». */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0 1.4rem;
+  border-radius: 999px;
   background: var(--verde);
-  z-index: -1;
-  border-radius: 4px;
-}
-.problema {
-  background: var(--blanco);
-  border: 2px solid var(--ink);
-  color: var(--ink);
-  border-radius: 16px;
-  padding: 12px 16px;
+  color: var(--tinta);
   font-weight: 600;
-  text-align: left;
-  transition: background 0.15s, transform 0.15s;
+  font-size: 1rem;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    transform 0.15s ease-out,
+    background-color 0.15s ease-out;
 }
-.problema:hover {
+.btn:hover {
+  background: var(--verde-claro);
   transform: translateY(-2px);
 }
-.problema[aria-pressed='true'] {
-  background: var(--ink);
-  color: var(--blanco);
+.btn:active {
+  transform: translateY(1px);
 }
-.telefono {
-  background: var(--ink);
-  border-radius: 40px;
-  padding: 12px;
-  width: 100%;
-  max-width: 380px;
-  box-shadow: 0 40px 70px -40px rgba(17, 18, 18, 0.6);
+.btn.tinta {
+  background: var(--tinta);
+  color: var(--sobre-marino);
 }
-.pantalla {
-  background: #e6eeea;
-  border-radius: 30px;
-  overflow: hidden;
+.btn.tinta:hover {
+  background: var(--marino);
+}
+
+/* ---------- Cabecera ---------- */
+.cab {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.cab .wrap {
   display: flex;
-  flex-direction: column;
-  min-height: 520px;
+  align-items: center;
+  gap: 1.75rem;
+  min-height: var(--alto-cab);
 }
-.globo {
-  max-width: 84%;
-  padding: 10px 14px;
-  border-radius: 18px;
-  font-size: 15px;
-  line-height: 1.4;
-  color: var(--ink);
-  animation: globo 0.35s ease-out backwards;
+.cab .logo img {
+  display: block;
+  height: 2.125rem;
+  width: auto;
 }
-.globo.yo {
-  align-self: flex-end;
-  background: #d5edc1;
-  border-bottom-right-radius: 6px;
+.cab nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
 }
-.globo.net {
-  align-self: flex-start;
-  background: var(--blanco);
-  border-bottom-left-radius: 6px;
+.cab nav a:not(.btn) {
+  position: relative;
+  padding-block: 0.9rem;
+  color: var(--sobre-marino-suave);
+  font-size: var(--t-chico);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.15s ease-out;
 }
-@keyframes globo {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+.cab nav a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0.45rem;
+  height: 2px;
+  background: var(--verde);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease-out;
+}
+.cab nav a:not(.btn):hover,
+.cab nav a[aria-current='page'] {
+  color: var(--sobre-marino);
+}
+.cab nav a:not(.btn):hover::after,
+.cab nav a[aria-current='page']::after {
+  transform: scaleX(1);
+}
+.cab .btn {
+  min-height: 2.75rem;
+  padding-inline: 1.15rem;
+  font-size: var(--t-chico);
+}
+.cab .abrir {
+  display: none;
+  margin-left: auto;
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  border: 1px solid var(--linea-marino);
+  border-radius: 999px;
+  color: var(--sobre-marino);
+  font-size: var(--t-chico);
+  font-weight: 500;
+}
+@media (max-width: 68.75rem) {
+  .cab .wrap {
+    flex-wrap: wrap;
+  }
+  .js .cab .abrir {
+    display: block;
+  }
+  .cab nav {
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding-bottom: var(--e-3);
+  }
+  .js .cab nav {
+    display: none;
+  }
+  .js .cab nav.abierto {
+    display: flex;
+  }
+  .cab nav a:not(.btn) {
+    padding-block: 1rem;
+    border-top: 1px solid var(--linea-marino);
+    font-size: 1rem;
+  }
+  .cab nav a:not(.btn)::after {
+    display: none;
+  }
+  .cab nav a[aria-current='page'] {
+    color: var(--verde);
+  }
+  .cab nav .btn {
+    align-self: flex-start;
+    margin-top: var(--e-2);
   }
 }
 
-/* ---------- Secciones ---------- */
-.frase {
-  font-family: var(--font-bricolage), var(--font-inter), system-ui, sans-serif;
-  font-weight: 800;
-  font-size: clamp(30px, 5vw, 60px);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--ink);
+/* ---------- El plano ---------- */
+.lamina {
+  container-type: inline-size;
+}
+.plano {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.plano text {
+  fill: var(--sobre-marino-suave);
+  font-family: var(--cuerpo);
+  font-size: 15px;
+  font-weight: 500;
+}
+@container (max-width: 33rem) {
+  .plano text {
+    display: none;
+  }
+}
+.plano .muro {
+  fill: none;
+  stroke: var(--muro);
+  stroke-width: 2.4;
+  stroke-linecap: square;
+}
+.plano .puerta {
+  fill: none;
+  stroke: var(--muro);
+  stroke-width: 1;
+  opacity: 0.7;
+}
+.plano .mueble {
+  fill: none;
+  stroke: var(--mueble);
+  stroke-width: 1;
+}
+.plano .cable {
+  opacity: 0.2;
+  transition: opacity 0.4s ease-out;
+}
+.plano .k {
+  fill: none;
+  stroke: var(--cian);
+  stroke-width: 1.2;
+}
+.plano .p {
+  fill: none;
+  stroke: var(--pulso);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 4 96;
+  stroke-dashoffset: 104;
+  opacity: 0;
+  animation: viaja var(--t, 3.4s) linear var(--d, 0s) infinite;
+}
+@keyframes viaja {
+  from {
+    stroke-dashoffset: 104;
+  }
+  to {
+    stroke-dashoffset: 4;
+  }
+}
+.plano .nodo {
+  opacity: 0.45;
+  transition: opacity 0.4s ease-out;
+}
+.plano .nodo circle {
+  fill: var(--marino);
+  stroke: var(--cian);
+  stroke-width: 1.4;
+}
+.plano .nodo .centro {
+  fill: var(--primario);
+  stroke: none;
+}
+.plano .camara {
+  fill: var(--cian);
+}
+.plano .rack .caja {
+  fill: var(--marino);
+  stroke: var(--verde);
+  stroke-width: 1.6;
+}
+.plano .rack .u {
+  stroke: var(--verde);
+  stroke-width: 1;
+  opacity: 0.7;
+}
+.plano .rack .latido {
+  fill: none;
+  stroke: var(--verde);
+  stroke-width: 1;
+  animation: latido 3s ease-out infinite;
+}
+.plano .rack .latido.b {
+  animation-delay: 1.5s;
+}
+@keyframes latido {
+  from {
+    transform: scale(0.5);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.plano .capa {
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+/* estado «todo»: la red completa */
+.plano[data-capa='todo'] .cable {
+  opacity: 0.75;
+}
+.plano[data-capa='todo'] .nodo {
+  opacity: 1;
+}
+.plano[data-capa='todo'] .capa.wifi {
+  opacity: 0.4;
+}
+.plano[data-capa='todo'] .capa.cam {
+  opacity: 0.45;
+}
+/* una capa a la vez */
+.plano[data-capa='wifi'] :is(.cable, .nodo, .capa).wifi,
+.plano[data-capa='cab'] :is(.cable, .nodo),
+.plano[data-capa='cab'] .capa.cab,
+.plano[data-capa='cam'] :is(.cable, .nodo, .capa).cam,
+.plano[data-capa='auto'] :is(.cable, .nodo, .capa).auto,
+.plano[data-capa='sis'] :is(.cable, .nodo, .capa).sis {
+  opacity: 1;
+}
+.plano[data-capa='todo'] .p,
+.plano[data-capa='wifi'] .cable.wifi .p,
+.plano[data-capa='cab'] .p,
+.plano[data-capa='cam'] .cable.cam .p,
+.plano[data-capa='auto'] .cable.auto .p,
+.plano[data-capa='sis'] .cable.sis .p {
+  opacity: 1;
+}
+.plano[data-capa='sis'] .nodo.sis circle {
+  opacity: 0;
+}
+/* WiFi */
+.plano .onda {
+  fill: none;
+  stroke: var(--primario);
+  stroke-width: 1.2;
+  animation: onda 3.6s ease-out infinite;
+}
+.plano .onda.b {
+  animation-delay: 1.2s;
+}
+.plano .onda.c {
+  animation-delay: 2.4s;
+}
+@keyframes onda {
+  from {
+    transform: scale(0.12);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+/* cámaras */
+.plano .cono {
+  fill: url(#plano-cono);
+  animation: barrido 7s ease-in-out infinite alternate;
+}
+.plano .cono.r {
+  animation-direction: alternate-reverse;
+}
+@keyframes barrido {
+  from {
+    transform: rotate(-7deg);
+  }
+  to {
+    transform: rotate(7deg);
+  }
+}
+/* cableado: cada punto, probado */
+.plano .ok circle {
+  fill: var(--verde);
+}
+.plano .ok path {
+  fill: none;
+  stroke: var(--tinta);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.plano[data-capa='cab'] .ok {
+  animation: aparece 6s var(--d, 0s) both infinite;
+}
+@keyframes aparece {
+  0%,
+  8% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  14%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* automatizaciones */
+.plano .chat .fondo {
+  fill: var(--marino);
+  opacity: 0.92;
+}
+.plano .chat .entra-msj {
+  fill: var(--marino-2);
+  stroke: var(--muro);
+  stroke-width: 1;
+}
+.plano .chat .sale-msj {
+  fill: var(--verde);
+}
+.plano .chat .tx {
+  stroke: var(--muro);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.plano .chat .tx.o {
+  stroke: var(--tinta);
+  opacity: 0.65;
+}
+.plano .chat .punto {
+  fill: var(--muro);
+  animation: tipeo 1.2s infinite;
+}
+.plano .chat .punto:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+.plano .chat .punto:nth-of-type(3) {
+  animation-delay: 0.4s;
+}
+@keyframes tipeo {
+  0%,
+  60%,
+  100% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+}
+.plano .chat .guia {
+  stroke: var(--verde);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+.plano[data-capa='auto'] .chat .m2 {
+  animation: llega 6s both infinite;
+}
+.plano[data-capa='auto'] .chat .m3 {
+  animation: llega 6s 1.4s both infinite;
+}
+@keyframes llega {
+  0%,
+  18% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  26%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* sistemas */
+.plano .pant rect {
+  fill: var(--marino);
+  stroke: var(--primario);
+  stroke-width: 1.4;
+}
+.plano .pant .pie-pant {
+  stroke: var(--primario);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.plano .pant .barra {
+  stroke: var(--verde);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.plano .pant .barra.b {
+  stroke: var(--primario);
+}
+.plano .capa.sis text {
+  fill: var(--sobre-marino);
+}
+
+/* La entrada: el plano se dibuja una vez al cargar la portada. Es el único movimiento que no pide nadie. */
+.plano.entrada .muro,
+.plano.entrada .k {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: traza 1.1s cubic-bezier(0.3, 0, 0.2, 1) forwards;
+}
+.plano.entrada .k {
+  animation-duration: 0.8s;
+  animation-delay: 1s;
+}
+.plano.entrada :is(.puerta, .mueble, text) {
+  animation: asoma 0.5s ease-out 0.7s backwards;
+}
+.plano.entrada :is(.nodo, .capa, .rack) {
+  animation: asoma 0.4s ease-out 1.6s backwards;
+}
+.plano.entrada .p {
+  animation:
+    viaja var(--t, 3.4s) linear 1.9s infinite,
+    asoma 0.3s ease-out 1.9s backwards;
+}
+@keyframes traza {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes asoma {
+  from {
+    opacity: 0;
+  }
+}
+.plano.pausa * {
+  animation-play-state: paused !important;
+}
+
+.pie-plano {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--e-2);
+  min-height: 2.75rem;
+  color: var(--sobre-marino-suave);
+  font-size: var(--t-nota);
+  line-height: 1.45;
+}
+.pie-plano button {
+  display: none;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: color 0.15s ease-out;
+}
+.js .pie-plano button {
+  display: inline-block;
+  min-height: 2.75rem;
+}
+.pie-plano button:hover {
+  color: var(--sobre-marino);
+}
+
+/* ---------- Portada ---------- */
+.portada {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  min-height: calc(100svh - var(--alto-cab));
+}
+.portada .arriba {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  padding-block: clamp(1.5rem, 3.5vw, 3rem);
+}
+.portada h1 {
+  font-size: var(--t-titular);
+  line-height: 1.05;
+}
+.portada h1 span {
+  display: block;
+  white-space: nowrap;
+}
+.portada .bajada {
+  max-width: 26em;
+  margin-top: var(--e-3);
+  color: var(--sobre-marino);
+  font-size: var(--t-bajada);
+  line-height: 1.5;
+}
+.portada .acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e-2) var(--e-3);
+  margin-top: var(--e-4);
+}
+.portada .zona {
+  color: var(--sobre-marino-suave);
+  font-size: var(--t-chico);
+  line-height: 1.5;
+}
+
+/* La leyenda del plano: cada servicio es una capa. */
+.leyenda {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid var(--linea-marino);
+}
+.leyenda a {
+  display: block;
+  padding: 1.25rem 1.25rem 1.75rem 0;
+  text-decoration: none;
+}
+.leyenda a + a {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--linea-marino);
+}
+.leyenda b {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+  font-family: var(--display);
+  font-size: 1.1875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.leyenda b::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  background: var(--verde);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease-out;
+}
+.leyenda a:hover b::after,
+.leyenda a:focus-visible b::after {
+  transform: scaleX(1);
+}
+.leyenda span {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--sobre-marino-suave);
+  font-size: var(--t-chico);
+  line-height: 1.45;
+}
+
+/* ---------- Secciones de la portada ---------- */
+.clientes .wrap {
+  padding-block: var(--e-seccion);
+}
+.clientes :is(p, h2) {
+  max-width: 22em;
+  color: var(--tinta);
+  font-size: var(--t-seccion);
+  line-height: 1.12;
+}
+.clientes h2 {
+  margin-bottom: var(--e-4);
+}
+.clientes ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e-3) var(--e-5);
+}
+.clientes img {
+  display: block;
+  height: 3rem;
+  width: auto;
+}
+
+.proceso {
+  background: var(--hoja);
+  border-block: 1px solid var(--linea);
+}
+.proceso .wrap {
+  padding-block: var(--e-seccion);
+}
+.proceso h2,
+.preguntas h2 {
+  color: var(--tinta);
+  font-size: var(--t-seccion);
+  line-height: 1.1;
+}
+.proceso h2 {
+  max-width: 14em;
 }
 .pasos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: var(--e-5);
   counter-reset: paso;
 }
 .pasos li {
+  position: relative;
+  padding: var(--e-4) var(--e-3) 0 0;
+  border-top: 2px solid var(--tinta);
   counter-increment: paso;
 }
 .pasos li::before {
-  content: counter(paso);
-  grid-row: span 2;
-  font-family: var(--font-bricolage), system-ui, sans-serif;
-  font-weight: 800;
-  font-size: 40px;
-  line-height: 1;
-  color: var(--teal);
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--tinta);
+  border-radius: 50%;
+  background: var(--hoja);
+}
+.pasos h3 {
+  color: var(--tinta);
+  font-family: var(--display);
+  font-size: var(--t-sub);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.pasos h3::before {
+  content: counter(paso) '. ';
+  font-variant-numeric: tabular-nums;
+}
+.pasos p {
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.marcas {
+  max-width: 44em;
+  margin-top: var(--e-5);
+  color: var(--texto-suave);
 }
 
-@media (max-width: 900px) {
-  .pantalla {
-    min-height: 440px;
+.preguntas .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(1.5rem, 5vw, 4.5rem);
+  padding-block: var(--e-seccion);
+}
+.preguntas h2 {
+  align-self: start;
+  position: sticky;
+  top: calc(var(--alto-cab) + 2rem);
+}
+.preguntas details {
+  border-bottom: 1px solid var(--linea);
+}
+.preguntas details:first-child {
+  border-top: 1px solid var(--linea);
+}
+.preguntas summary {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--e-2);
+  padding-block: 1.25rem;
+  color: var(--tinta);
+  font-family: var(--display);
+  font-size: var(--t-sub);
+  font-weight: 700;
+  line-height: 1.3;
+  cursor: pointer;
+  list-style: none;
+}
+.preguntas summary::-webkit-details-marker {
+  display: none;
+}
+.preguntas summary::after {
+  content: '+';
+  color: var(--enlace);
+  font-family: var(--cuerpo);
+  font-weight: 400;
+  transition: transform 0.2s ease-out;
+}
+.preguntas details[open] summary::after {
+  transform: rotate(45deg);
+}
+.preguntas details p {
+  max-width: 36em;
+  padding-bottom: 1.4rem;
+}
+
+/* ---------- Cierre y pie ---------- */
+.cierre .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--e-4);
+  align-items: end;
+  padding-block: var(--e-seccion-larga);
+}
+.cierre h2 {
+  font-size: var(--t-titulo);
+  line-height: 1.06;
+}
+.cierre p {
+  max-width: 24em;
+  margin-bottom: var(--e-3);
+  color: var(--sobre-marino-suave);
+}
+.pie {
+  border-top: 1px solid var(--linea-marino);
+  color: var(--sobre-marino-suave);
+  font-size: var(--t-chico);
+  line-height: 1.5;
+}
+.pie .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--e-3) var(--e-5);
+  padding-block: var(--e-4);
+}
+.pie img {
+  display: block;
+  height: 1.75rem;
+  width: auto;
+}
+.pie ul {
+  display: grid;
+}
+.pie li:not(:has(a)) {
+  padding-block: 0.3rem;
+}
+.pie a {
+  display: inline-block;
+  padding-block: 0.3rem;
+  color: inherit;
+  text-underline-offset: 0.2em;
+  transition: color 0.15s ease-out;
+}
+.pie a:hover {
+  color: var(--sobre-marino);
+}
+
+/* ---------- Página de servicio ---------- */
+.servicio .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 36rem);
+  column-gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+  padding-block: clamp(2.5rem, 5vw, 4.5rem) var(--e-seccion);
+}
+.servicio .enc,
+.servicio .cuerpo {
+  grid-column: 1;
+}
+.servicio .lado {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  position: sticky;
+  top: calc(var(--alto-cab) + 1.5rem);
+  padding: 1.25rem 1.25rem 1rem;
+}
+.servicio h1,
+.pagina h1 {
+  color: var(--tinta);
+  font-size: var(--t-titulo);
+}
+.servicio .bajada,
+.pagina .bajada {
+  max-width: 30em;
+  margin-top: var(--e-3);
+  font-size: var(--t-bajada);
+  line-height: 1.5;
+}
+.servicio .cuerpo {
+  max-width: 65ch;
+  margin-top: var(--e-5);
+}
+.servicio h2 {
+  margin-top: var(--e-5);
+  color: var(--tinta);
+  font-size: var(--t-apartado);
+  line-height: 1.12;
+}
+.servicio h2:first-child {
+  margin-top: 0;
+}
+.lista {
+  margin-top: var(--e-3);
+  border-top: 1px solid var(--linea);
+}
+.lista li {
+  padding-block: 0.9rem;
+  border-bottom: 1px solid var(--linea);
+}
+.lista b {
+  color: var(--tinta);
+  font-weight: 600;
+}
+.lista.queda li {
+  color: var(--tinta);
+  font-weight: 500;
+}
+.lista .estado {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--linea);
+  color: var(--tinta);
+  font-size: var(--t-nota);
+  font-weight: 500;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+.servicio .frase {
+  margin-top: var(--e-3);
+  color: var(--tinta);
+  font-family: var(--display);
+  font-size: var(--t-sub);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.servicio .frase + p {
+  margin-top: var(--e-2);
+}
+/* El detalle técnico vive aparte: lo abre quien lo quiere. */
+.tecnico {
+  margin-top: var(--e-3);
+}
+.tecnico summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  color: var(--texto-suave);
+  font-size: var(--t-chico);
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+.tecnico summary::-webkit-details-marker {
+  display: none;
+}
+.tecnico summary::before {
+  content: '';
+  flex: none;
+  width: 2.5rem;
+  height: 1.375rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 0.6875rem 50%, var(--hoja) 0.5rem, transparent 0.53rem),
+    var(--linea);
+  transition: background-color 0.2s ease-out;
+}
+.tecnico[open] summary {
+  color: var(--tinta);
+}
+.tecnico[open] summary::before {
+  background:
+    radial-gradient(circle at 1.8125rem 50%, var(--hoja) 0.5rem, transparent 0.53rem),
+    var(--enlace);
+}
+.tecnico ul {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: var(--e-1);
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  border-left: 2px solid var(--enlace);
+  font-size: var(--t-chico);
+  line-height: 1.55;
+}
+.servicio .acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e-2) var(--e-3);
+  margin-top: var(--e-5);
+}
+.sigue {
+  display: inline-block;
+  padding-block: 0.65rem;
+  color: var(--enlace);
+  font-weight: 600;
+  text-underline-offset: 0.25em;
+}
+
+/* ---------- Páginas simples: contacto y privacidad ---------- */
+.pagina .wrap {
+  max-width: 54rem;
+  padding-block: clamp(2.5rem, 6vw, 5rem) var(--e-seccion);
+}
+.datos {
+  margin-top: var(--e-5);
+  border-top: 1px solid var(--linea);
+}
+.datos div {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: 0.25rem var(--e-3);
+  padding-block: 1.1rem;
+  border-bottom: 1px solid var(--linea);
+}
+.datos dt {
+  color: var(--texto-suave);
+  font-size: var(--t-chico);
+}
+.datos dd {
+  color: var(--tinta);
+  font-weight: 500;
+  overflow-wrap: break-word;
+}
+.datos small {
+  display: block;
+  color: var(--texto-suave);
+  font-size: var(--t-chico);
+  font-weight: 400;
+}
+.pagina .btn {
+  margin-top: var(--e-4);
+}
+.pagina .prosa {
+  display: grid;
+  gap: var(--e-2);
+  max-width: 65ch;
+  margin-top: var(--e-4);
+}
+.pagina .prosa a {
+  color: var(--enlace);
+  font-weight: 600;
+}
+
+@media (max-width: 68.75rem) {
+  .servicio .wrap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .servicio .lado {
+    grid-column: 1;
+    grid-row: auto;
+    position: static;
+    margin-top: var(--e-4);
+  }
+  .servicio .cuerpo {
+    margin-top: var(--e-4);
+  }
+}
+@media (max-width: 61.25rem) {
+  .portada {
+    min-height: 0;
+  }
+  .portada .arriba,
+  .preguntas .wrap,
+  .cierre .wrap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .leyenda {
+    grid-template-columns: minmax(0, 1fr);
+    border-top: 0;
+  }
+  .leyenda a,
+  .leyenda a + a {
+    padding: 1rem 0 1.1rem;
+    border-left: 0;
+    border-top: 1px solid var(--linea-marino);
+  }
+  .pasos {
+    grid-template-columns: minmax(0, 1fr);
+    margin-left: 6px;
+  }
+  .pasos li {
+    padding: 0 0 var(--e-4) var(--e-3);
+    border-top: 0;
+    border-left: 2px solid var(--tinta);
+  }
+  .pasos li:last-child {
+    padding-bottom: 0;
+  }
+  .pasos li::before {
+    top: 0;
+    left: -7px;
+  }
+  .preguntas h2 {
+    position: static;
+  }
+  .datos div {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::after {
+  .plano *,
+  .btn,
+  .leyenda b::after,
+  .cab nav a::after,
+  .preguntas summary::after {
     animation: none !important;
     transition: none !important;
+  }
+  .plano.entrada .muro,
+  .plano.entrada .k {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+  .plano .p {
+    display: none;
+  }
+  .plano .onda {
+    opacity: 0.5;
+  }
+  .plano .onda.b {
+    transform: scale(0.66);
+  }
+  .plano .onda.c {
+    transform: scale(0.33);
+  }
+  .js .pie-plano button {
+    display: none;
   }
 }
