@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'Netcore: cableado estructurado y fibra óptica en Asunción'
+export const alt = 'Netcore: ¿qué te está frenando el negocio?'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -15,20 +15,23 @@ export default function Image() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          background: '#0A2540',
-          color: '#FFFFFF',
+          background: '#F4F8F6',
+          color: '#111212',
           padding: '72px 80px',
           fontFamily: 'sans-serif',
         }}
       >
-        <div style={{ display: 'flex', fontSize: 34, fontWeight: 700, letterSpacing: 4, color: '#47A1DD' }}>
-          NETCORE TECHNOLOGY
+        <div style={{ display: 'flex', fontSize: 34, fontWeight: 700, letterSpacing: 4, color: '#2E6E99' }}>
+          NETCORE
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ fontSize: 72, fontWeight: 800, lineHeight: 1.05 }}>Cableado estructurado</div>
-          <div style={{ fontSize: 72, fontWeight: 800, lineHeight: 1.05 }}>y fibra óptica en Asunción</div>
-          <div style={{ marginTop: 28, fontSize: 32, color: '#C9D8E6' }}>
-            Instalado y certificado con equipos Fluke · Cámaras · Racks
+          <div style={{ fontSize: 92, fontWeight: 800, lineHeight: 1 }}>¿Qué te está</div>
+          <div style={{ display: 'flex', fontSize: 92, fontWeight: 800, lineHeight: 1 }}>
+            <span style={{ background: '#9AC77D', borderRadius: 10, padding: '0 14px', marginLeft: -14 }}>frenando</span>
+            <span style={{ marginLeft: 22 }}>el negocio?</span>
+          </div>
+          <div style={{ marginTop: 34, fontSize: 34, color: '#33423F' }}>
+            Internet, cámaras y tecnología para tu negocio. Charla gratis de 15 minutos.
           </div>
         </div>
         <div style={{ display: 'flex', gap: 16 }}>

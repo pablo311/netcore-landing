@@ -1,28 +1,23 @@
-import Navbar from '@/components/Navbar'
+import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
-import Services from '@/components/Services'
-import Proceso from '@/components/Proceso'
-import Obras from '@/components/Obras'
-import WhyUs from '@/components/WhyUs'
-import Preguntas from '@/components/Preguntas'
-import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
+import Clientes from '@/components/Clientes'
+import { Cierre, ComoEmpezamos, Pie, Preguntas, Productos, QueHacemos } from '@/components/Secciones'
 import WhatsAppFlotante from '@/components/WhatsAppFlotante'
 
 export default function Home() {
   return (
     <>
-      <Navbar />
+      <Nav />
       <main>
         <Hero />
-        <Services />
-        <Proceso />
-        <Obras />
-        <WhyUs />
+        <Clientes />
+        <QueHacemos />
+        <ComoEmpezamos />
+        <Productos />
         <Preguntas />
-        <Contact />
+        <Cierre />
       </main>
-      <Footer />
+      <Pie />
       <WhatsAppFlotante />
     </>
   )

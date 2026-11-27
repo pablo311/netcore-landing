@@ -1,41 +1,72 @@
-import { WA_PRESUPUESTO } from '@/lib/site'
-import InformeDemo from '@/components/InformeDemo'
-import Marcas from '@/components/Marcas'
+'use client'
+import { useState } from 'react'
+import { PROBLEMAS, waLink } from '@/lib/site'
+
+const CIERRE = '¿Te queda bien una charla de 15 minutos esta semana?'
 
 export default function Hero() {
-  return (
-    <section id="inicio" className="relative overflow-hidden bg-navy pb-20 pt-28 text-white sm:pb-24 sm:pt-36">
-      <div className="trama absolute inset-0" aria-hidden="true" />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.15fr_1fr]">
-        <div>
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-1.5 text-xs font-medium text-white/80">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal" aria-hidden="true" />
-            Infraestructura de red para empresas y edificios
-          </p>
-          <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Cableado estructurado y fibra óptica en Asunción,{' '}
-            <span className="text-primario">instalado y certificado.</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
-            Tendemos tu red UTP Cat6 y fibra, armamos racks, instalamos cámaras y te entregamos cada punto
-            certificado con equipos Fluke. Trabajamos de noche o por etapas para que tu negocio no pare.
-          </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href={WA_PRESUPUESTO} target="_blank" rel="noopener noreferrer" className="btn-primario text-base">
-              Pedir presupuesto por WhatsApp
-            </a>
-            <a href="#servicios" className="btn-secundario text-base">
-              Ver servicios
-            </a>
-          </div>
-          <p className="mt-4 text-sm text-white/60">Presupuesto sin cargo y detallado, ítem por ítem.</p>
-        </div>
+  const [i, setI] = useState(0)
+  const p = PROBLEMAS[i]
+  const globos = [
+    { de: 'yo', texto: p.dice },
+    ...p.respuestas.map((texto) => ({ de: 'net', texto })),
+    { de: 'net', texto: CIERRE },
+  ]
 
-        <div className="flex justify-center lg:justify-end">
-          <InformeDemo />
+  return (
+    <section className="wrap grid items-start gap-12 pb-16 pt-6 lg:grid-cols-[1.15fr_.85fr] lg:pb-24 lg:pt-8">
+      <div>
+        <h1 className="display titular">
+          ¿Qué te está <em>frenando</em> el negocio?
+        </h1>
+        <p className="mt-6 max-w-[520px] text-xl">
+          Contanos por WhatsApp. Te decimos cómo lo arreglamos y cuánto sale, sin vueltas.
+        </p>
+        <p className="mt-8 text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--acero)]">
+          Elegí lo que más te suena
+        </p>
+        <div className="mt-3 flex flex-wrap gap-2.5" role="group" aria-label="Problemas frecuentes">
+          {PROBLEMAS.map((x, n) => (
+            <button key={x.boton} type="button" className="problema" aria-pressed={n === i} onClick={() => setI(n)}>
+              {x.boton}
+            </button>
+          ))}
         </div>
       </div>
-      <Marcas />
+
+      <div className="flex justify-center lg:justify-end">
+        <div className="telefono">
+          <div className="pantalla">
+            <div className="flex items-center gap-3 bg-[var(--navy)] px-4 py-3.5 text-white">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/netcore-icon.svg" alt="" width={38} height={38} className="h-[38px] w-[38px] rounded-full bg-white" />
+              <div>
+                <b className="block text-[15px]">Netcore</b>
+                <span className="text-xs text-[var(--texto-claro)]">en línea</span>
+              </div>
+              <span className="pill ml-auto bg-white/15 uppercase tracking-[0.08em] text-white" style={{ fontSize: 11 }}>
+                Ejemplo
+              </span>
+            </div>
+            {/* key reinicia la animación de los globos al cambiar de problema */}
+            <div key={i} className="flex flex-1 flex-col gap-2.5 px-3.5 py-[18px]" aria-live="polite">
+              {globos.map((g, n) => (
+                <p key={n} className={`globo ${g.de}`} style={{ animationDelay: `${n * 0.45}s` }}>
+                  {g.texto}
+                </p>
+              ))}
+            </div>
+            <a
+              href={waLink(`Hola Netcore. ${p.dice}`)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn mx-3.5 mb-4 bg-[#1FA855] text-white"
+            >
+              Mandar esto por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

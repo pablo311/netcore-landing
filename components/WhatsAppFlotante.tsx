@@ -1,9 +1,9 @@
-import { WA_PRESUPUESTO } from '@/lib/site'
+import { WA_CHARLA } from '@/lib/site'
 
 export default function WhatsAppFlotante() {
   return (
     <a
-      href={WA_PRESUPUESTO}
+      href={WA_CHARLA}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribir a Netcore por WhatsApp"

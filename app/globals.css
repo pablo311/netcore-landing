@@ -2,85 +2,202 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 72px;
+/* Diseño "Hablemos": tipografía grande, parte del problema del cliente
+   y lo lleva a WhatsApp. Tokens de la marca v2.1 (ver DESIGN.md). */
+:root {
+  --navy: #0a2540;
+  --navy-3: #071b30;
+  --ink: #111212;
+  --pri: #47a1dd;
+  --acero: #4780a7;
+  --link: #2e6e99;
+  --teal: #0cb8b3;
+  --verde: #9ac77d;
+  --blanco: #ffffff;
+  --papel: #f4f8f6;
+  --texto: #33423f;
+  --texto-claro: #c9d8e6;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
 body {
-  background: #ffffff;
-  color: #111212;
+  background: var(--papel);
+  color: var(--texto);
+  font-size: 16px;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+}
+:focus-visible {
+  outline: 3px solid var(--pri);
+  outline-offset: 3px;
 }
 
 @layer components {
-  .btn-primario {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primario px-6 py-3.5 font-semibold text-navy transition hover:bg-cian focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primario;
+  .wrap {
+    @apply mx-auto w-full max-w-[1120px] px-5;
   }
-  .btn-secundario {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10;
+  .display {
+    font-family: var(--font-bricolage), var(--font-inter), system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
   }
-  .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.2em] text-enlace;
+  .h2 {
+    font-family: var(--font-bricolage), var(--font-inter), system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.08;
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--ink);
+    text-wrap: balance;
   }
-  .titulo-seccion {
-    @apply font-display text-3xl font-extrabold leading-tight tracking-tight text-navy sm:text-4xl;
+  .sobre {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
-}
-
-.trama {
-  background-image:
-    linear-gradient(to right, rgba(71, 161, 221, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(71, 161, 221, 0.08) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-
-/* Cinta de marcas */
-.cinta {
-  animation: cinta 28s linear infinite;
-}
-.cinta-mascara {
-  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-}
-@keyframes cinta {
-  to {
-    transform: translateX(-25%);
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 font-semibold no-underline;
+    font-size: 16px;
+    padding: 15px 24px;
+    border-radius: 14px;
+    transition: transform 0.15s, background 0.15s;
   }
-}
-
-/* Pulso de luz en el dibujo de fibra */
-.pulso-fibra {
-  stroke-dasharray: 14 220;
-  animation: pulso-fibra 2.8s linear infinite;
-}
-@keyframes pulso-fibra {
-  from {
-    stroke-dashoffset: 234;
+  .btn:hover {
+    transform: translateY(-2px);
   }
-  to {
-    stroke-dashoffset: 0;
+  .pill {
+    @apply inline-block whitespace-nowrap font-semibold;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 99px;
   }
 }
 
-/* Sello PASS del informe de ejemplo */
-.sello-pass {
-  animation: sello-pass 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+/* ---------- Hero ---------- */
+.titular {
+  position: relative;
+  z-index: 0;
+  font-size: clamp(44px, 7.4vw, 96px);
+  line-height: 0.96;
+  color: var(--ink);
 }
-@keyframes sello-pass {
+.titular em {
+  font-style: normal;
+  position: relative;
+  white-space: nowrap;
+}
+.titular em::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.04em;
+  height: 0.2em;
+  background: var(--verde);
+  z-index: -1;
+  border-radius: 4px;
+}
+.problema {
+  background: var(--blanco);
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  border-radius: 16px;
+  padding: 12px 16px;
+  font-weight: 600;
+  text-align: left;
+  transition: background 0.15s, transform 0.15s;
+}
+.problema:hover {
+  transform: translateY(-2px);
+}
+.problema[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--blanco);
+}
+.telefono {
+  background: var(--ink);
+  border-radius: 40px;
+  padding: 12px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 40px 70px -40px rgba(17, 18, 18, 0.6);
+}
+.pantalla {
+  background: #e6eeea;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+}
+.globo {
+  max-width: 84%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--ink);
+  animation: globo 0.35s ease-out backwards;
+}
+.globo.yo {
+  align-self: flex-end;
+  background: #d5edc1;
+  border-bottom-right-radius: 6px;
+}
+.globo.net {
+  align-self: flex-start;
+  background: var(--blanco);
+  border-bottom-left-radius: 6px;
+}
+@keyframes globo {
   from {
     opacity: 0;
-    transform: scale(0.6);
+    transform: translateY(10px);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .cinta,
-  .sello-pass,
-  .pulso-fibra {
-    animation: none;
+/* ---------- Secciones ---------- */
+.frase {
+  font-family: var(--font-bricolage), var(--font-inter), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(30px, 5vw, 60px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.pasos {
+  counter-reset: paso;
+}
+.pasos li {
+  counter-increment: paso;
+}
+.pasos li::before {
+  content: counter(paso);
+  grid-row: span 2;
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--teal);
+}
+
+@media (max-width: 900px) {
+  .pantalla {
+    min-height: 440px;
   }
+}
+@media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  *,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }

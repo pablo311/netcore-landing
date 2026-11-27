@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Footer from '@/components/Footer'
+import { Pie } from '@/components/Secciones'
 import { EMPRESA } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -11,21 +11,21 @@ export const metadata: Metadata = {
 export default function Privacidad() {
   return (
     <>
-      <header className="bg-navy py-5">
+      <header className="py-5">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <a href="/" aria-label="Volver al inicio">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/netcore-horizontal-dark.svg" alt="Netcore" className="h-8 w-auto" width={138} height={40} />
+            <img src="/netcore-horizontal-light.svg" alt="Netcore" className="h-9 w-auto" width={138} height={40} />
           </a>
         </div>
       </header>
-      <main className="mx-auto max-w-3xl px-4 py-14 text-slate-700 sm:px-6">
-        <h1 className="font-display text-3xl font-extrabold text-navy">Política de privacidad</h1>
+      <main className="mx-auto max-w-3xl px-4 py-14 text-[var(--texto)] sm:px-6">
+        <h1 className="display text-4xl text-[var(--ink)]">Política de privacidad</h1>
         <div className="mt-8 space-y-5 text-[15px] leading-relaxed">
           <p>
             Este sitio es de {EMPRESA.razonSocial} (RUC {EMPRESA.ruc}). No tiene cuentas de usuario ni usa cookies
-            de seguimiento. El formulario de presupuesto no guarda nada en el sitio: solo arma un mensaje y abre
-            WhatsApp para que lo envíes vos.
+            de seguimiento. Los botones del sitio no guardan nada: solo arman un mensaje y abren WhatsApp para
+            que lo envíes vos.
           </p>
           <p>
             Cuando nos escribís por WhatsApp o por correo, usamos tu nombre, tu contacto y lo que nos contás solo para
@@ -34,17 +34,17 @@ export default function Privacidad() {
           </p>
           <p>
             Podés pedirnos ver, corregir o borrar tus datos escribiendo a{' '}
-            <a href={`mailto:${EMPRESA.emailAdmin}`} className="font-semibold text-enlace underline">
-              {EMPRESA.emailAdmin}
+            <a href={`mailto:${EMPRESA.email}`} className="font-semibold text-[var(--link)] underline">
+              {EMPRESA.email}
             </a>
             .
           </p>
         </div>
-        <a href="/" className="mt-10 inline-block font-semibold text-enlace hover:underline">
+        <a href="/" className="mt-10 inline-block font-semibold text-[var(--link)] hover:underline">
           ← Volver al inicio
         </a>
       </main>
-      <Footer />
+      <Pie />
     </>
   )
 }

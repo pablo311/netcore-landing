@@ -18,9 +18,9 @@ const bricolage = localFont({
   display: 'swap',
 })
 
-const TITULO = 'Cableado estructurado y fibra óptica en Asunción | Netcore'
+const TITULO = 'Netcore | Internet, cámaras y tecnología para tu negocio en Asunción'
 const DESCRIPCION =
-  'Instalamos y certificamos redes UTP Cat6 y fibra óptica para empresas y edificios en Asunción. Certificación Fluke, cámaras y racks. Presupuesto sin cargo.'
+  'Internet y WiFi que no se cortan, cámaras que ves desde el celular, redes y fibra óptica, y un WhatsApp que atiende solo. Para negocios y empresas de Asunción. Charla gratis de 15 minutos.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
-export const viewport: Viewport = { themeColor: '#0A2540' }
+export const viewport: Viewport = { themeColor: '#F4F8F6' }
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -55,19 +55,20 @@ const jsonLd = {
       logo: `${SITE_URL}/icon.png`,
       image: `${SITE_URL}/opengraph-image`,
       telephone: EMPRESA.telefonoE164,
-      email: EMPRESA.emailVentas,
+      email: EMPRESA.email,
       description: DESCRIPCION,
       address: { '@type': 'PostalAddress', addressLocality: 'Asunción', addressCountry: 'PY' },
-      areaServed: ['Asunción', 'Gran Asunción', 'San Lorenzo', 'Ciudad del Este', 'Paraguay'].map(
-        (n) => ({ '@type': 'Place', name: n }),
-      ),
+      areaServed: ['Asunción', 'Gran Asunción', 'Ciudad del Este', 'Paraguay'].map((n) => ({
+        '@type': 'Place',
+        name: n,
+      })),
       knowsAbout: [
-        'Cableado estructurado',
-        'Certificación de cableado UTP Cat6',
+        'Internet y WiFi para negocios',
+        'Redes y cableado estructurado',
         'Fibra óptica',
-        'Cámaras IP y CCTV',
-        'Racks y switches',
-        'Botones de pánico',
+        'Cámaras de seguridad y alarmas',
+        'Automatización de WhatsApp',
+        'Sistemas a medida',
       ],
     },
     {
